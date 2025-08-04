@@ -1,7 +1,7 @@
 bot_template='''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://cdn-icons-png.flaticon.com/128/6989/6989363.png">
+        <img src="https://lh3.googleusercontent.com/d/1Si7bnQf770sTE9XFOv8F_awYSmE2QjuJ">
     </div>
     <br> Leah: </br>
     <div class="message">{{MSG}}</div>
