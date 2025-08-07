@@ -123,7 +123,7 @@ st.header('')
 st.write(bot_template.replace("{{MSG}}", "Hola, mi nombre es Leah, soy una viajera del espacio y he enviado un mensaje cifrado a la Tierra. " \
     "Estoy aquí para descifrarlo con tu ayuda. Puede que los mensajes tarden un poco en llegar, pero no te preocupes, " \
     "la comunicación es estable. Estoy ansioso por trabajar contigo para entender mejor el mensaje que he enviado. ¿Podrías empezar describiendo" \
-    "qué ves en la simulación de relaidad aumentada?" ), unsafe_allow_html=True)
+    "qué ves en la simulación de realidad aumentada?" ), unsafe_allow_html=True)
 question = st.chat_input("Centro Espacial (Tierra): ")
 if question:
     st.write(user_template.replace("{{MSG}}", question), unsafe_allow_html=True)
