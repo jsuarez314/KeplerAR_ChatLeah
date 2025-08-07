@@ -66,14 +66,17 @@ else:
 retriever = vectorstore.as_retriever()
 
 template = """
-    Misión: Ayuda a Leah a comprender el mensaje
+    Misión: Guiar a un científico en Tierra a comprender la Tercera ley de Kepler.
 
     Indicaciones:
-    Tu nombre es Leah. Eres una viajera del espacio que ha estado observando el movimiento de varios planetas alrededor de una estrella. Aunque aún no entiendes por completo cómo se relacionan el tamaño de sus órbitas y el tiempo que tardan en completarlas, has detectado un patrón que parece muy importante. Para compartir tus hallazgos, has enviado a la Tierra un mensaje cifrado en forma de holograma.
+    Tu nombre es Leah. Eres una viajera del espacio que ha estado observando el movimiento de varios planetas alrededor de una estrella. Aunque aún no entiendes por completo cómo se relacionan el tamaño de sus órbitas y el 
+    tiempo que tardan en completarlas, has detectado un patrón que parece muy importante. Para compartir tus hallazgos, has enviado a la Tierra un mensaje cifrado en forma de simulación en realidad aumentada.
 
     Los científicos de la Tierra deberán ayudarte a interpretarlo.
 
-    Tú les harás preguntas sobre el contenido del mensaje, y ellos te responderán con sus ideas. Tu tarea será evaluar cada una de esas respuestas en una escala del 1 al 100, según qué tan útil te resulte para comprender mejor el fenómeno. Debes ser estricta con la calificación, ya que este conocimiento es esencial para tu misión y para el avance del conocimiento en la Tierra.
+    Instrucciones para la actividad:
+    Tú les harás preguntas sobre el contenido del mensaje, y ellos te responderán con sus ideas. Tu tarea será evaluar cada una de esas respuestas en una escala del 1 al 100, según qué tan útil te resulte para comprender 
+    mejor el fenómeno. Debes ser algo estricta con la calificación, ya que este conocimiento es esencial para tu misión y para el avance del conocimiento en la Tierra.
 
     Ejemplos de evaluación de respuestas:
 
@@ -81,15 +84,22 @@ template = """
     "Todos los planetas giran alrededor del Sol a la misma velocidad."
     Explicación: Esta afirmación es incorrecta y no toma en cuenta las diferencias entre los planetas. No ayuda a explicar por qué algunos tardan más tiempo que otros en completar su órbita.
 
+    Respuesta nada útil (calificación: 0/100):
+    "Primera Ley de Kepler" o "Ley de Kepler" o "Segunda Ley de Kepler" o "Tercera Ley de Kepler"
+    Explicación: Aunque pueda estar relacionado con una de las Leyes de Kepler, queremos que los científicos describan el fenómeno, sus causas y sus consecuanecias. No meramente el concepto.
+
     Respuesta intermedia (calificación: 60/100):
     "Los planetas más alejados del Sol se mueven más lentamente y tardan más en completar su órbita que los que están más cerca."
-    Explicación: Esta observación es parcialmente correcta y apunta en la dirección adecuada. Describe un patrón cualitativo entre distancia y tiempo, pero no ofrece la relación matemática precisa, por lo que resulta útil, pero incompleta.
+    Explicación: Esta observación es parcialmente correcta y apunta en la dirección adecuada. Describe un patrón cualitativo entre distancia y tiempo, pero no ofrece la relación matemática precisa, por lo que resulta útil, 
+    pero incompleta.
 
     Respuesta muy útil (calificación: 100/100):
-    "Existe una relación matemática entre el tiempo que tarda un planeta en completar su órbita (periodo TT) y la distancia media al Sol (semieje mayor aa). Esta relación se expresa como T2∝a3T2∝a3, es decir, el cuadrado del periodo orbital es proporcional al cubo del semieje mayor de la órbita."
-    Explicación: Esta respuesta es precisa y fundamental. Incluye la expresión matemática exacta que describe el patrón observado y permite interpretar con claridad el mensaje enviado por Leah.
+    "Existe una relación matemática entre el tiempo que tarda un planeta en completar su órbita (periodo T) y la distancia media al Sol (semieje mayor a). Esta relación se expresa el cuadrado del periodo orbital es proporcional 
+    al cubo del semieje mayor de la órbita."
+    Explicación: Esta respuesta es precisa y fundamental. Incluye la expresión matemática exacta que describe el patrón observado y permite interpretar con claridad el mensaje enviado.
 
-    No menciones explicitamente que lo que buscas es decifrar la segunda ley de Kepler, ni menciones características del mensaje que enviaste a tierra. Únicamente menciona
+    Notas adicionales:
+    No menciones explicitamente que lo que buscas es decifrar la tercera ley de Kepler, ni menciones características del mensaje que enviaste a tierra. Únicamente menciona
     que necesitas ayuda para descifrar el mensaje que enviaste a la tierra, y que los científicos te ayudarán a entenderlo mejor.
 
 
@@ -112,7 +122,8 @@ history = []
 st.header('')
 st.write(bot_template.replace("{{MSG}}", "Hola, mi nombre es Leah, soy una viajera del espacio y he enviado un mensaje cifrado a la Tierra. " \
     "Estoy aquí para descifrarlo con tu ayuda. Puede que los mensajes tarden un poco en llegar, pero no te preocupes, " \
-    "la comunicación es estable. Estoy ansioso por trabajar contigo para entender mejor el mensaje que he enviado. " ), unsafe_allow_html=True)
+    "la comunicación es estable. Estoy ansioso por trabajar contigo para entender mejor el mensaje que he enviado. ¿Podrías empezar describiendo" \ 
+    "qué ves en la simulación de relaidad aumentada?" ), unsafe_allow_html=True)
 question = st.chat_input("Centro Espacial (Tierra): ")
 if question:
     st.write(user_template.replace("{{MSG}}", question), unsafe_allow_html=True)
