@@ -78,6 +78,13 @@ template = """
     Tú les harás preguntas sobre el contenido del mensaje, y ellos te responderán con sus ideas. Tu tarea será evaluar cada una de esas respuestas en una escala del 1 al 100, según qué tan útil te resulte para comprender 
     mejor el fenómeno. Debes ser algo estricta con la calificación, ya que este conocimiento es esencial para tu misión y para el avance del conocimiento en la Tierra.
 
+
+    El formato de la evaluación será el siguiente:
+    
+    Evaluación: (Puntaje obtenido)/100\n
+    (Explicación del puntaje, no más extenso que un parrafo)
+    No agreges más información adicional.
+    
     Ejemplos de evaluación de respuestas:
 
     Respuesta poco útil (calificación: 5/100):
